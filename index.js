@@ -81,16 +81,9 @@ const promptUser = () => {
     return inquirer.prompt(questions);
 };
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
-
 // TODO: Create a function to initialize app
-// function init() {}
-
-// Function call to initialize app
-// init();
-
-promptUser()
+const init = () => {
+    promptUser()
     .then(answers => {
         return generateReadme(answers);
     })
@@ -103,3 +96,9 @@ promptUser()
     .catch(err => {
         console.log(err);
     });
+}
+
+// Function call to initialize app
+init();
+
+
