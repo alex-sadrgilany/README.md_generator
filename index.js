@@ -27,7 +27,7 @@ const questions = [
     {
         type: "input",
         name: "installation",
-        message: "Please enter instructions on how to install your project:"
+        message: "Please enter instructions on how to install your project:" 
     },
     {
         type: "input",
@@ -35,9 +35,23 @@ const questions = [
         message: "Please enter information on how to use your project:"
     },
     {
+        type: "confirm",
+        name: "confirmCredits",
+        message: "Would you like your README.md to include a Credits Section?",
+        default: true
+    },
+    {
         type: "input",
         name: "credits",
-        message: "Please list your collaborators, if any, with their GitHub links:"
+        message: "Please list your collaborators with their GitHub links:",
+        when: ({confirmCredits}) => {
+            if (confirmCredits) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
     },
     {
         type: "list",
@@ -48,12 +62,27 @@ const questions = [
             "GNU GPL 3.0",
             "MIT",
             "Mozilla 2.0",
+            "Open/No License"
         ]
+    },
+    {
+        type: "confirm",
+        name: "confirmFeatures",
+        message: "Would you like your README.md to include a Features Section?",
+        default: true
     },
     {
         type: "input",
         name: "features",
-        message: "Please list your project's features:"
+        message: "Please list your project's features:",
+        when: ({confirmFeatures}) => {
+            if (confirmFeatures) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
     },
     {
         type: "input",
