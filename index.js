@@ -124,11 +124,7 @@ const init = () => {
         '\n',
         console.log("You can find your new README.md in the 'dist' folder!"),
         '\n',
-<<<<<<< HEAD
-        console.log("Please remember to add your legal name to the license section!")
-=======
         console.log("Please remember to add your legal name to the license section!");
->>>>>>> license_badge
     })
     .catch(err => {
         console.log(err);
