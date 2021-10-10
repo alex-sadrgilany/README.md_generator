@@ -120,7 +120,11 @@ const init = () => {
         return writeFile(markdown);
     })
     .then(writeFileResponse => {
-        console.log(writeFileResponse);
+        console.log(writeFileResponse),
+        '\n',
+        console.log("You can find your new README.md in the 'dist' folder!"),
+        '\n',
+        console.log("Please remember to add your legal name to the license section!");
     })
     .catch(err => {
         console.log(err);

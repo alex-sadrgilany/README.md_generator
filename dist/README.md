@@ -2,18 +2,17 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-# readme generator
+# alex
 
 ## Description
 
-this is a project that allows users to generate a readme using node.js
+
 
 
 ## Table of Contents
 
 * [Installation](#installation)
 * [Usage](#usage)
-* [Credits](#credits)
 * [License](#license)
 * [Contributing](#contributing)
 * [Test](#tests)
@@ -22,16 +21,12 @@ this is a project that allows users to generate a readme using node.js
 
 ## Installation
 
-clone the repo from github to your local machine
+
 
 ## Usage
 
-type node index to start it up and answer each prompt accordingly
 
 
-## Credits
-
-george, steven, sally
 
 
 ## License
@@ -60,14 +55,14 @@ limitations under the License.
 
 ## Contributing
 
-fork at your own risk
+
 
 ## Tests
 
-run it and see if it works smoothly
+
 
 ## Questions
 
-[My GitHub Profile](https://github.com/alex)
+[My GitHub Profile](https://github.com/)
 
-To reach me with questions, please email: alex@
+To reach me with questions, please email: 
