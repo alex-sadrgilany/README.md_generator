@@ -127,8 +127,7 @@ file, You can obtain one at https://mozilla.org/MPL/2.0/.
     };
 };
 
-// TODO: Create a function to generate markdown for README
-
+// Create a function that returns a credits section if the user wanted one
 const generateCredits = creditsText => {
     if (!creditsText) {
         return "";
@@ -140,6 +139,7 @@ ${creditsText}
 `
 };
 
+// Create a function that returns a features section if the user wanted one
 const generateFeatures = featuresText => {
     if (!featuresText) {
         return "";
@@ -151,6 +151,7 @@ ${featuresText}
 `
 };
 
+// Create a function that returns a table of contents that matches the sections the user selected in the prompts
 const generateTable = (yesCredits, yesFeatures) => {
     if (!yesCredits && yesFeatures) {
         return `
@@ -206,6 +207,7 @@ const generateTable = (yesCredits, yesFeatures) => {
     };
 };
 
+// TODO: Create a function to generate markdown for README
 const generateMarkdown = data => {
     return `
 ${renderLicenseBadge(data.license)}
