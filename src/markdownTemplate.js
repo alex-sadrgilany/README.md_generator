@@ -198,10 +198,8 @@ ${contributingText}
 
 const generateTests = testsText => {
     if (testsText == "") {
-        console.log("empty!");
         return "";
     }
-    console.log("notempty");
     return `
 ## Tests
 
@@ -301,5 +299,6 @@ ${generateTests(data.tests)}
 ${generateQuestions(data.github, data.email)}
 `
 };
-  
+
+// export so it can be called on index.js
 module.exports = generateMarkdown;

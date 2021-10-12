@@ -1,3 +1,4 @@
+// require fs package
 const fs = require("fs");
 
 // Create a function that works on Promise to write the README.md
@@ -16,6 +17,7 @@ const writeFile = fileContent => {
   });
 };
 
+// export so it can be called on index.js
 module.exports = {
   writeFile: writeFile
 };

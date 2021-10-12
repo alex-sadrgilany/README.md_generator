@@ -77,13 +77,14 @@ const questions = [
         message: "Please enter your email address:"
     }
 ];
-
+// welcome message for the user once they run the application
 const welcome = () => {
     console.log('\x1b[31m', `                   
     This application serves as a README.md generator based on your input. 
     Please note: if you enter nothing for a response, that section will be omitted entirely.`)
 };
 
+// prompt function
 const promptUser = () => {
     welcome();
     return inquirer.prompt(questions);
