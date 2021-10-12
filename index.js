@@ -35,23 +35,9 @@ const questions = [
         message: "Please enter information on how to use your project:"
     },
     {
-        type: "confirm",
-        name: "confirmCredits",
-        message: "Would you like your README.md to include a Credits Section?",
-        default: true
-    },
-    {
         type: "input",
         name: "credits",
-        message: "Please list your collaborators with their GitHub links:",
-        when: ({confirmCredits}) => {
-            if (confirmCredits) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
+        message: "Please list your collaborators, if any, with their GitHub links:"
     },
     {
         type: "list",
@@ -66,23 +52,9 @@ const questions = [
         ]
     },
     {
-        type: "confirm",
-        name: "confirmFeatures",
-        message: "Would you like your README.md to include a Features Section?",
-        default: true
-    },
-    {
         type: "input",
         name: "features",
-        message: "Please list your project's features:",
-        when: ({confirmFeatures}) => {
-            if (confirmFeatures) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
+        message: "Please list your project's features:"
     },
     {
         type: "input",
@@ -92,7 +64,7 @@ const questions = [
     {
         type: "input",
         name: "tests",
-        message: "Please enter instructions on how to test your project:"
+        message: "Please enter instructions on how to test your project:",
     },
     {
         type: "input",
@@ -106,7 +78,14 @@ const questions = [
     }
 ];
 
+const welcome = () => {
+    console.log('\x1b[31m', `                   
+    This application serves as a README.md generator based on your input. 
+    Please note: if you enter nothing for a response, that section will be omitted entirely.`)
+};
+
 const promptUser = () => {
+    welcome();
     return inquirer.prompt(questions);
 };
 

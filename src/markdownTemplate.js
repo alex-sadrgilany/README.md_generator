@@ -127,9 +127,10 @@ file, You can obtain one at https://mozilla.org/MPL/2.0/.
     };
 };
 
+// The following functions all prepare for if the user enters nothing for a prompt. and if they do so it will be omitted from the readme.
 const generateDescription = descriptionText => {
-    if (descriptionText == null) {
-        return;
+    if (descriptionText == "") {
+        return "";
     }
     return `
 ## Description
@@ -139,8 +140,8 @@ ${descriptionText}
 };
 
 const generateInstallation = installationText => {
-    if (installationText == null) {
-        return;
+    if (installationText == "") {
+        return "";
     }
     return `
 ## Installation
@@ -150,8 +151,8 @@ ${installationText}
 };
 
 const generateUsage = usageText => {
-    if (usageText == null) {
-        return;
+    if (usageText == "") {
+        return "";
     }
     return `
 ## Usage
@@ -162,8 +163,8 @@ ${usageText}
 
 // Create a function that returns a credits section if the user wanted one
 const generateCredits = creditsText => {
-    if (creditsText == null) {
-        return;
+    if (creditsText == "") {
+        return "";
     }
     return `
 ## Credits
@@ -174,8 +175,8 @@ ${creditsText}
 
 // Create a function that returns a features section if the user wanted one
 const generateFeatures = featuresText => {
-    if (featuresText == null) {
-        return;
+    if (featuresText == "") {
+        return "";
     }
     return `
 ## Features
@@ -185,8 +186,8 @@ ${featuresText}
 };
 
 const generateContributing = contributingText => {
-    if (contributingText == null) {
-        return;
+    if (contributingText == "") {
+        return "";
     }
     return `
 ## Contributing
@@ -196,9 +197,11 @@ ${contributingText}
 };
 
 const generateTests = testsText => {
-    if (testsText == null) {
-        return;
+    if (testsText == "") {
+        console.log("empty!");
+        return "";
     }
+    console.log("notempty");
     return `
 ## Tests
 
@@ -207,17 +210,17 @@ ${testsText}
 };
 
 const generateQuestions = (githubText, emailText) => {
-    if (githubText == null && emailText == null) {
-        return;
+    if (githubText == "" && emailText == "") {
+        return "";
     }
-    else if (githubText == null) {
+    else if (githubText == "") {
         return `
 ## Questions
 
 To reach me with questions, please email: ${emailText}
 `
     }
-    else if (emailText == null) {
+    else if (emailText == "") {
         return `
 ## Questions
 
@@ -248,7 +251,7 @@ ${renderLicenseBadge(data.license)}
 
 ${generateDescription(data.description)}
 
-${generateTable}
+
 
 ${generateInstallation(data.installation)}
 

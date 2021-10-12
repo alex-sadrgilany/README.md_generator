@@ -4,34 +4,18 @@
 
 # a
 
-undefined
-
-
-## Table of Contents
-
-* [Installation](#installation)
-* [Usage](#usage)
-* [License](#license)
-* [Contributing](#contributing)
-* [Test](#tests)
-* [Questions](#questions)
-
-
-## Installation
-
-
-
-## Usage
 
 
 
 
 
-## License
+
+
+
+
 
 
 [Apache 2.0 License](https://opensource.org/licenses/Apache-2.0)
-
 
 
 Copyright 2021 [name of copyright owner]
@@ -51,16 +35,12 @@ limitations under the License.
 
 
 
-## Contributing
 
 
-
-## Tests
 
 
 
 ## Questions
 
-[My GitHub Profile](https://github.com/)
+To reach me with questions, please email: alex
 
-To reach me with questions, please email: 
