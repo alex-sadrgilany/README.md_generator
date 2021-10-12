@@ -1,27 +1,27 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
 // If there is no license, return an empty string
 const renderLicenseBadge = licenseText => {
-    if (licenseText = "Apache 2.0") {
+    if (licenseText == "Apache 2.0") {
         return `
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 `;
     }
-    else if (licenseText = "GNU GPL 3.0") {
+    else if (licenseText == "GNU GPL 3.0") {
         return `
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 `;
     }
-    else if (licenseText = "MIT") {
+    else if (licenseText == "MIT") {
         return `
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 `;
     }
-    else if (licenseText = "Mozilla 2.0") {
+    else if (licenseText == "Mozilla 2.0") {
         return `
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
 `;
     }
-    else if (licenseText = "Open/No License") {
+    else if (licenseText == "Open/No License") {
         return "";
     };
 };
@@ -29,27 +29,27 @@ const renderLicenseBadge = licenseText => {
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
 const renderLicenseLink = licenseText => {
-    if (licenseText = "Apache 2.0") {
+    if (licenseText == "Apache 2.0") {
         return `
 [Apache 2.0 License](https://opensource.org/licenses/Apache-2.0)
 `;
     }
-    else if (licenseText = "GNU GPL 3.0") {
+    else if (licenseText == "GNU GPL 3.0") {
         return `
 [GNU General Public License 3.0](https://www.gnu.org/licenses/gpl-3.0)
 `;
     }
-    else if (licenseText = "MIT") {
+    else if (licenseText == "MIT") {
         return `
 [MIT License](https://opensource.org/licenses/MIT)
 `;
     }
-    else if (licenseText = "Mozilla 2.0") {
+    else if (licenseText == "Mozilla 2.0") {
         return `
 [Mozilla Public License 2.0](https://opensource.org/licenses/MPL-2.0)
 `;
     }
-    else if (licenseText = "Open/No License") {
+    else if (licenseText == "Open/No License") {
         return "";
     };
 };
@@ -57,7 +57,7 @@ const renderLicenseLink = licenseText => {
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 const renderLicenseSection = licenseText => {
-    if (licenseText = "Apache 2.0") {
+    if (licenseText == "Apache 2.0") {
         return `
 Copyright ${new Date().getFullYear()} [name of copyright owner]
 
@@ -74,7 +74,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 `;
     }
-    else if (licenseText = "GNU GPL 3.0") {
+    else if (licenseText == "GNU GPL 3.0") {
         return `
 <one line to give the program's name and a brief idea of what it does.>
 Copyright (C) ${new Date().getFullYear()}  <name of author>
@@ -93,7 +93,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 `;
     }
-    else if (licenseText = "MIT") {
+    else if (licenseText == "MIT") {
         return `
 Copyright ${new Date().getFullYear()} <COPYRIGHT HOLDER>
 
@@ -115,14 +115,14 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 `;
     }
-    else if (licenseText = "Mozilla 2.0") {
+    else if (licenseText == "Mozilla 2.0") {
         return `
 This Source Code Form is subject to the terms of the Mozilla Public
 License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at https://mozilla.org/MPL/2.0/.
 `;
     }
-    else if (licenseText = "Open/No License") {
+    else if (licenseText == "Open/No License") {
         return "";
     };
 };
@@ -238,9 +238,37 @@ To reach me with questions, please email: ${emailText}
     };
 };
 
-// Create a function that returns a table of contents that matches the sections the user selected in the prompts
-const generateTable = () => {
+// Create a function that returns a table of contents that matches the sections the user filled in the prompts
+const generateTable = (
+    installationText, usageText, creditsText, featuresText, contributingText, testsText, githubText, emailText) => {
+        var tableOfContents = `
+## Table of Contents
 
+`;
+        if (!installationText == "") {
+            tableOfContents += "* [Installation](#installation)" + '\n';
+        }
+        if (!usageText == "") {
+            tableOfContents += "* [Usage](#usage)" + '\n';
+            
+        }
+        if (!creditsText == "") {
+            tableOfContents += "* [Credits](#credits)" + '\n';
+        }
+        tableOfContents += "* [License](#license)" + '\n';
+        if (!featuresText == "") {
+            tableOfContents += "* [Features](#features)" + '\n';
+        }
+        if (!contributingText == "") {
+            tableOfContents += "* [Contributing](#contributing)" + '\n';
+        }
+        if (!testsText == "") {
+            tableOfContents += "* [Test](#tests)" + '\n';
+        }
+        if (!githubText == "" || !emailText == "") {
+            tableOfContents += "* [Questions](#questions)";
+        }
+        return tableOfContents;
 };
 
 // TODO: Create a function to generate markdown for README
@@ -251,13 +279,15 @@ ${renderLicenseBadge(data.license)}
 
 ${generateDescription(data.description)}
 
-
+${generateTable(data.installation, data.usage, data.credits, data.features, data.contributing, data.tests, data.github, data.email)}
 
 ${generateInstallation(data.installation)}
 
 ${generateUsage(data.usage)}
 
 ${generateCredits(data.credits)}
+
+## License
 
 ${renderLicenseLink(data.license)}
 ${renderLicenseSection(data.license)}
