@@ -127,10 +127,43 @@ file, You can obtain one at https://mozilla.org/MPL/2.0/.
     };
 };
 
+const generateDescription = descriptionText => {
+    if (descriptionText == null) {
+        return;
+    }
+    return `
+## Description
+
+${descriptionText}
+`
+};
+
+const generateInstallation = installationText => {
+    if (installationText == null) {
+        return;
+    }
+    return `
+## Installation
+
+${installationText}
+`
+};
+
+const generateUsage = usageText => {
+    if (usageText == null) {
+        return;
+    }
+    return `
+## Usage
+
+${usageText}
+`
+};
+
 // Create a function that returns a credits section if the user wanted one
 const generateCredits = creditsText => {
-    if (!creditsText) {
-        return "";
+    if (creditsText == null) {
+        return;
     }
     return `
 ## Credits
@@ -141,70 +174,70 @@ ${creditsText}
 
 // Create a function that returns a features section if the user wanted one
 const generateFeatures = featuresText => {
-    if (!featuresText) {
-        return "";
+    if (featuresText == null) {
+        return;
     }
     return `
-## Credits
+## Features
 
 ${featuresText}
 `
 };
 
-// Create a function that returns a table of contents that matches the sections the user selected in the prompts
-const generateTable = (yesCredits, yesFeatures) => {
-    if (!yesCredits && yesFeatures) {
-        return `
-## Table of Contents
-
-* [Installation](#installation)
-* [Usage](#usage)
-* [License](#license)
-* [Features](#features)
-* [Contributing](#contributing)
-* [Test](#tests)
-* [Questions](#questions)
-`;
+const generateContributing = contributingText => {
+    if (contributingText == null) {
+        return;
     }
-    else if (!yesFeatures && yesCredits) {
-        return `
-## Table of Contents
+    return `
+## Contributing
 
-* [Installation](#installation)
-* [Usage](#usage)
-* [Credits](#credits)
-* [License](#license)
-* [Contributing](#contributing)
-* [Test](#tests)
-* [Questions](#questions)
-`;
+${contributingText}
+`
+};
+
+const generateTests = testsText => {
+    if (testsText == null) {
+        return;
     }
-    else if (yesFeatures && yesCredits) {
-        return `
-## Table of Contents
+    return `
+## Tests
 
-* [Installation](#installation)
-* [Usage](#usage)
-* [Credits](#credits)
-* [License](#license)
-* [Features](#features)
-* [Contributing](#contributing)
-* [Test](#tests)
-* [Questions](#questions)
-`;
+${testsText}
+`
+};
+
+const generateQuestions = (githubText, emailText) => {
+    if (githubText == null && emailText == null) {
+        return;
+    }
+    else if (githubText == null) {
+        return `
+## Questions
+
+To reach me with questions, please email: ${emailText}
+`
+    }
+    else if (emailText == null) {
+        return `
+## Questions
+
+[My GitHub Profile](https://github.com/${githubText})
+`
     }
     else {
         return `
-## Table of Contents
+## Questions
 
-* [Installation](#installation)
-* [Usage](#usage)
-* [License](#license)
-* [Contributing](#contributing)
-* [Test](#tests)
-* [Questions](#questions)
-`;
+[My GitHub Profile](https://github.com/${githubText})
+
+To reach me with questions, please email: ${emailText}
+`
     };
+};
+
+// Create a function that returns a table of contents that matches the sections the user selected in the prompts
+const generateTable = () => {
+
 };
 
 // TODO: Create a function to generate markdown for README
@@ -213,44 +246,27 @@ const generateMarkdown = data => {
 ${renderLicenseBadge(data.license)}
 # ${data.title}
 
-## Description
+${generateDescription(data.description)}
 
-${data.description}
+${generateTable}
 
-${generateTable(data.credits, data.features)}
+${generateInstallation(data.installation)}
 
-## Installation
-
-${data.installation}
-
-## Usage
-
-${data.usage}
+${generateUsage(data.usage)}
 
 ${generateCredits(data.credits)}
 
-## License
-
 ${renderLicenseLink(data.license)}
-
 ${renderLicenseSection(data.license)}
 
 ${generateFeatures(data.features)}
 
-## Contributing
+${generateContributing(data.contributing)}
 
-${data.contributing}
+${generateTests(data.tests)}
 
-## Tests
-
-${data.tests}
-
-## Questions
-
-[My GitHub Profile](https://github.com/${data.github})
-
-To reach me with questions, please email: ${data.email}
-`;
-}
+${generateQuestions(data.github, data.email)}
+`
+};
   
 module.exports = generateMarkdown;
