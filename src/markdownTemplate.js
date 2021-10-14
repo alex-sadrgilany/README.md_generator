@@ -1,64 +1,27 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-const renderLicenseBadge = licenseText => {
-    if (licenseText == "Apache 2.0") {
-        return `
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-`;
-    }
-    else if (licenseText == "GNU GPL 3.0") {
-        return `
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-`;
-    }
-    else if (licenseText == "MIT") {
-        return `
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-`;
-    }
-    else if (licenseText == "Mozilla 2.0") {
-        return `
-[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)
-`;
-    }
-    else if (licenseText == "Open/No License") {
-        return "";
-    };
-};
-
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-const renderLicenseLink = licenseText => {
-    if (licenseText == "Apache 2.0") {
-        return `
-[Apache 2.0 License](https://opensource.org/licenses/Apache-2.0)
-`;
-    }
-    else if (licenseText == "GNU GPL 3.0") {
-        return `
-[GNU General Public License 3.0](https://www.gnu.org/licenses/gpl-3.0)
-`;
-    }
-    else if (licenseText == "MIT") {
-        return `
-[MIT License](https://opensource.org/licenses/MIT)
-`;
-    }
-    else if (licenseText == "Mozilla 2.0") {
-        return `
-[Mozilla Public License 2.0](https://opensource.org/licenses/MPL-2.0)
-`;
-    }
-    else if (licenseText == "Open/No License") {
-        return "";
-    };
-};
-
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-const renderLicenseSection = licenseText => {
-    if (licenseText == "Apache 2.0") {
-        return `
+// Global License Object that stores the proper return strings based on what license the user selects
+const licenseObj = {
+    badges: {
+        apache:`
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`,
+        gnu:`
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`,
+        mit:`
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`,
+        mozilla:`
+[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)`
+    },
+    links: {
+        apache:`
+[Apache 2.0 License](https://opensource.org/licenses/Apache-2.0)`,
+        gnu:`
+[GNU General Public License 3.0](https://www.gnu.org/licenses/gpl-3.0)`,
+        mit:`
+[MIT License](https://opensource.org/licenses/MIT)`,
+        mozilla:`
+[Mozilla Public License 2.0](https://opensource.org/licenses/MPL-2.0)`
+    },
+    blurbs: {
+        apache:`
 Copyright ${new Date().getFullYear()} [name of copyright owner]
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -71,11 +34,8 @@ Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
-limitations under the License.
-`;
-    }
-    else if (licenseText == "GNU GPL 3.0") {
-        return `
+limitations under the License.`,
+        gnu:`
 <one line to give the program's name and a brief idea of what it does.>
 Copyright (C) ${new Date().getFullYear()}  <name of author>
 
@@ -90,11 +50,8 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
-`;
-    }
-    else if (licenseText == "MIT") {
-        return `
+along with this program.  If not, see <https://www.gnu.org/licenses/>.`,
+        mit:`
 Copyright ${new Date().getFullYear()} <COPYRIGHT HOLDER>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy 
@@ -112,19 +69,97 @@ INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
 PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT 
 HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF 
 CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
-OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-`;
-    }
-    else if (licenseText == "Mozilla 2.0") {
-        return `
+OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.`,
+        mozilla:`
 This Source Code Form is subject to the terms of the Mozilla Public
 License, v. 2.0. If a copy of the MPL was not distributed with this
-file, You can obtain one at https://mozilla.org/MPL/2.0/.
-`;
+file, You can obtain one at https://mozilla.org/MPL/2.0/.`
+    }  
+};
+
+// TODO: Create a function that returns a license badge based on which license is passed in
+// If there is no license, return an empty string
+
+const renderLicenseBadge = licenseText => {
+    let badge;
+    switch (licenseText) {
+        case "Apache 2.0":
+            badge = licenseObj.badges.apache;
+            break;
+        case "GNU GPL 3.0":
+            badge = licenseObj.badges.gnu;
+            break;
+        case "MIT":
+            badge = licenseObj.badges.mit;
+            break;
+        case "Mozilla 2.0":
+            badge = licenseObj.badges.mozilla;
+            break;
+        case "Open/No License":
+            badge = "";
+            break;
     }
-    else if (licenseText == "Open/No License") {
+    return badge;
+};
+
+// TODO: Create a function that returns the license link
+// If there is no license, return an empty string
+const renderLicenseLink = licenseText => {
+    let link;
+    switch (licenseText) {
+        case "Apache 2.0":
+            link = licenseObj.links.apache;
+            break;
+        case "GNU GPL 3.0":
+            link = licenseObj.links.gnu;
+            break;
+        case "MIT":
+            link = licenseObj.links.mit;
+            break;
+        case "Mozilla 2.0":
+            link = licenseObj.links.mozilla;
+            break;
+        case "Open/No License":
+            link = "";
+            break;
+    }
+    return link;
+};
+
+const renderLicenseWarning = licenseText => {
+    let blurb;
+    switch (licenseText) {
+        case "Apache 2.0":
+            blurb = licenseObj.blurbs.apache;
+            break;
+        case "GNU GPL 3.0":
+            blurb = licenseObj.blurbs.gnu;
+            break;
+        case "MIT":
+            blurb = licenseObj.blurbs.mit;
+            break;
+        case "Mozilla 2.0":
+            blurb = licenseObj.blurbs.mozilla;
+            break;
+        case "Open/No License":
+            blurb = "";
+            break;
+    }
+    return blurb;
+};
+
+// TODO: Create a function that returns the license section of README
+// If there is no license, return an empty string
+
+const generateLicenseSection = licenseText => {
+    if (licenseText == "Open/No License") {
         return "";
-    };
+    }
+    return `
+## License
+
+${renderLicenseLink(licenseText)}
+${renderLicenseWarning(licenseText)}`
 };
 
 // The following functions all prepare for if the user enters nothing for a prompt. and if they do so it will be omitted from the readme.
@@ -135,8 +170,7 @@ const generateDescription = descriptionText => {
     return `
 ## Description
 
-${descriptionText}
-`
+${descriptionText}`
 };
 
 const generateInstallation = installationText => {
@@ -146,8 +180,7 @@ const generateInstallation = installationText => {
     return `
 ## Installation
 
-${installationText}
-`
+${installationText}`
 };
 
 const generateUsage = usageText => {
@@ -157,8 +190,7 @@ const generateUsage = usageText => {
     return `
 ## Usage
 
-${usageText}
-`
+${usageText}`
 };
 
 // Create a function that returns a credits section if the user wanted one
@@ -169,8 +201,7 @@ const generateCredits = creditsText => {
     return `
 ## Credits
 
-${creditsText}
-`
+${creditsText}`
 };
 
 // Create a function that returns a features section if the user wanted one
@@ -181,8 +212,7 @@ const generateFeatures = featuresText => {
     return `
 ## Features
 
-${featuresText}
-`
+${featuresText}`
 };
 
 const generateContributing = contributingText => {
@@ -192,8 +222,7 @@ const generateContributing = contributingText => {
     return `
 ## Contributing
 
-${contributingText}
-`
+${contributingText}`
 };
 
 const generateTests = testsText => {
@@ -203,8 +232,7 @@ const generateTests = testsText => {
     return `
 ## Tests
 
-${testsText}
-`
+${testsText}`
 };
 
 const generateQuestions = (githubText, emailText) => {
@@ -238,7 +266,7 @@ To reach me with questions, please email: ${emailText}
 
 // Create a function that returns a table of contents that matches the sections the user filled in the prompts
 const generateTable = (
-    installationText, usageText, creditsText, featuresText, contributingText, testsText, githubText, emailText) => {
+    installationText, usageText, creditsText, licenseText, featuresText, contributingText, testsText, githubText, emailText) => {
         var tableOfContents = `
 ## Table of Contents
 
@@ -248,12 +276,13 @@ const generateTable = (
         }
         if (!usageText == "") {
             tableOfContents += "* [Usage](#usage)" + '\n';
-            
         }
         if (!creditsText == "") {
             tableOfContents += "* [Credits](#credits)" + '\n';
         }
-        tableOfContents += "* [License](#license)" + '\n';
+        if (!licenseText == "Open/No License") {
+            tableOfContents += "* [License](#license)" + '\n';
+        }
         if (!featuresText == "") {
             tableOfContents += "* [Features](#features)" + '\n';
         }
@@ -277,7 +306,7 @@ ${renderLicenseBadge(data.license)}
 
 ${generateDescription(data.description)}
 
-${generateTable(data.installation, data.usage, data.credits, data.features, data.contributing, data.tests, data.github, data.email)}
+${generateTable(data.installation, data.usage, data.credits, data.license, data.features, data.contributing, data.tests, data.github, data.email)}
 
 ${generateInstallation(data.installation)}
 
@@ -285,10 +314,7 @@ ${generateUsage(data.usage)}
 
 ${generateCredits(data.credits)}
 
-## License
-
-${renderLicenseLink(data.license)}
-${renderLicenseSection(data.license)}
+${generateLicenseSection(data.license)}
 
 ${generateFeatures(data.features)}
 

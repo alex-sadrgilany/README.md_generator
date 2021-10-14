@@ -1,7 +1,6 @@
 
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-
+            [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 # a
 
 
@@ -9,7 +8,7 @@
 
 ## Table of Contents
 
-* [License](#license)
+
 
 
 
@@ -22,7 +21,6 @@
 
 
 [Apache 2.0 License](https://opensource.org/licenses/Apache-2.0)
-
 
 Copyright 2021 [name of copyright owner]
 
@@ -37,7 +35,6 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
 
 
 
