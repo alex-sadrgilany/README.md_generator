@@ -7,8 +7,18 @@ const generateReadme = require("./src/markdownTemplate");
 const questions = [
     {
         type: "input",
+        name: "github",
+        message: "Please enter your GitHub username:"
+    },
+    {
+        type: "input",
+        name: "email",
+        message: "Please enter your email address:"
+    },
+    {
+        type: "input",
         name: "title",
-        message: "What is the Title of your Project? (Required):",
+        message: "Please enter the title of your project (Required):",
         validate: titleInput => {
             if (titleInput) {
                 return true;
@@ -25,21 +35,6 @@ const questions = [
         message: "Please enter a description about your project:"
     },
     {
-        type: "input",
-        name: "installation",
-        message: "Please enter instructions on how to install your project:" 
-    },
-    {
-        type: "input",
-        name: "usage",
-        message: "Please enter information on how to use your project:"
-    },
-    {
-        type: "input",
-        name: "credits",
-        message: "Please list your collaborators, if any, with their GitHub links:"
-    },
-    {
         type: "list",
         name: "license",
         message: "Please select an appropriate license for your project:",
@@ -53,13 +48,8 @@ const questions = [
     },
     {
         type: "input",
-        name: "features",
-        message: "Please list your project's features:"
-    },
-    {
-        type: "input",
-        name: "contributing",
-        message: "Please enter guidelines for developers wanting to contribute to your project:"
+        name: "installation",
+        message: "Please enter instructions on how to install your project:" 
     },
     {
         type: "input",
@@ -68,18 +58,28 @@ const questions = [
     },
     {
         type: "input",
-        name: "github",
-        message: "Please enter your GitHub username:"
+        name: "usage",
+        message: "Please enter information on how to use your project:"
     },
     {
         type: "input",
-        name: "email",
-        message: "Please enter your email address:"
+        name: "contributing",
+        message: "Please enter guidelines for developers wanting to contribute to your project:"
+    },
+    {
+        type: "input",
+        name: "features",
+        message: "Please list your project's features:"
+    },
+    {
+        type: "input",
+        name: "credits",
+        message: "Please list your collaborators, if any, with their GitHub links:"
     }
 ];
 // welcome message for the user once they run the application
 const welcome = () => {
-    console.log('\x1b[31m', `                   
+    console.log('\x1b[36m', `                   
     This application serves as a README.md generator based on your input. 
     Please note: if you enter nothing for a response, that section will be omitted entirely.`)
 };
@@ -100,11 +100,11 @@ const init = () => {
         return writeFile(markdown);
     })
     .then(writeFileResponse => {
-        console.log(writeFileResponse),
+        console.log('\x1b[32m', writeFileResponse.message),
+        '\n';
+        console.log('\x1b[36m', "You can find your new README.md in the 'dist' folder!"),
         '\n',
-        console.log("You can find your new README.md in the 'dist' folder!"),
-        '\n',
-        console.log("Please remember to add your legal name to the license section!");
+        console.log(" Please remember to add your legal name to the license section!");
     })
     .catch(err => {
         console.log(err);
