@@ -2,9 +2,9 @@
 const licenseObj = {
     badges: {
         apache:`
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`,
+[![License: Apache 2](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`,
         gnu:`
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)`,
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)`,
         mit:`
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`,
         mozilla:`
@@ -280,7 +280,7 @@ const generateTable = (
         if (!creditsText == "") {
             tableOfContents += "* [Credits](#credits)" + '\n';
         }
-        if (!licenseText == "Open/No License") {
+        if (!(licenseText == "Open/No License")) {
             tableOfContents += "* [License](#license)" + '\n';
         }
         if (!featuresText == "") {
