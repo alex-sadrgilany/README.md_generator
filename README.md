@@ -14,19 +14,19 @@ Screenshots
 
 Welcome Message after node index.js
 
-![Welcome](./assets/images/welcome_screenshot.png)
+![Welcome](./assets/images/welcome_screenshot.PNG)
 
 Finishing Message after prompts complete
 
-![Finish](./assets/images/complete_screenshot.png)
+![Finish](./assets/images/complete_screenshot.PNG)
 
 Generated Readme Part 1
 
-![Generated Result](./assets/images/generated1_screenshot.png)
+![Generated Result](./assets/images/generated1_screenshot.PNG)
 
 Generated Readme Part 2
 
-![Generated Result2](./assets/images/generated2_screenshot.png)
+![Generated Result2](./assets/images/generated2_screenshot.PNG)
 
 ## Table of Contents
 
