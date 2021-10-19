@@ -8,6 +8,25 @@
 
 This project serves as a README.md generator. It is built using node.js, and in order for it to work it must be run through the terminal. It was my intent to make this generator as dynamic as possible while also adhering to the acceptance criteria. This is because if a user decides they don't want a certain section in their readme, they can simply enter nothing and it will not appear in the distributed readme. This also means having a dynamic table of contents that responds based on which prompts the user has answered.
 
+Here is a walkthrough video explaining how the project works: https://watch.screencastify.com/v/UIlmXuTxW9NlEmaIdRg1
+
+Screenshots
+
+Welcome Message after node index.js
+
+![Welcome](./assets/images/welcome_screenshot.png)
+
+Finishing Message after prompts complete
+
+![Finish](./assets/images/complete_screenshot.png)
+
+Generated Readme Part 1
+
+![Generated Result](./assets/images/generated1_screenshot.png)
+
+Generated Readme Part 2
+
+![Generated Result2](./assets/images/generated2_screenshot.png)
 
 ## Table of Contents
 
