@@ -264,6 +264,7 @@ To reach me with questions, please email: ${emailText}
     };
 };
 
+
 // Create a function that returns a table of contents that matches the sections the user filled in the prompts
 const generateTable = (
     installationText, usageText, creditsText, licenseText, featuresText, contributingText, testsText, githubText, emailText) => {
