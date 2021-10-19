@@ -60,7 +60,7 @@ I didn't collaborate with anybody on this project.
 
 [MIT License](https://opensource.org/licenses/MIT)
 
-Copyright 2021 <COPYRIGHT HOLDER>
+Copyright 2021 Alex Sadrgilany
 
 Permission is hereby granted, free of charge, to any person obtaining a copy 
 of this software and associated documentation files (the "Software"), to deal 
